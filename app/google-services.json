@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "185748242289",
+    "project_id": "habitwith-28cbf",
+    "storage_bucket": "habitwith-28cbf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185748242289:android:1fc8e5e62296fb3fffc0d0",
+        "android_client_info": {
+          "package_name": "www.iesmurgi.habitwith"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185748242289-ihto0o9uockmm1smrmupuocib8h3mf1t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "www.iesmurgi.habitwith",
+            "certificate_hash": "0bb9aa48288f65387ab69a8bd5dd43ac0e5cb729"
+          }
+        },
+        {
+          "client_id": "185748242289-k7cclatvr4ho7tqli1k7a6niovjqnfq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPkYEGl4pRdp2grIwXb5-QTXGBPuF7zlY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185748242289-k7cclatvr4ho7tqli1k7a6niovjqnfq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

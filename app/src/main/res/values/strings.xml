@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">HabitWith</string>
+    <string name="habit">HabitWith</string>
+    <string name="comenzar">¡Comienza tu cambio!</string>
+    <string name="login">Login</string>
+    <string name="reg">Registrarse</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_user">Correo</string>
+    <string name="login_pass">Contraseña</string>
+    <string name="login_pass_confirm">Confirmar contraseña</string>
+    <string name="hacer_login">Inicia sesión en tu </string>
+    <string name="cuenta">CUENTA</string>
+    <string name="crear">Crea una nueva</string>
+    <string name="primer_objetivo">Máximiza la perdida de grasa conservando tu grasa muscular</string>
+    <string name="objetivo">¿Cuál es tu objetivo principal?</string>
+    <string name="segundo_objetivo">Manten tu físico y peso manteniendote saludable</string>
+    <string name="tercero_objetivo">Incrementa tu masa muscular y vuélvete mas fuerte</string>
+    <string name="datos">Datos personales</string>
+    <string name="edad">Introduzca su edad en años</string>
+    <string name="altura">Introduzca su altura en cm</string>
+    <string name="peso">"Introduzca su peso en KG "</string>
+    <string name="error_email">El email introducido no es válido</string>
+    <string name="error_pass">Las contraseñas introducidas no coinciden</string>
+    <string name="error_pass_regex">La contraseña necesita tener, minimo una mayuscula, minuscula, un digito y 8 carácteres.</string>
+    <string name="usuario_registrado">Usuario registrado de forma correcta</string>
+    <string name="error_mail_existe">El correo introducido ya está registrado</string>
+    <string name="error_mail_desconocido">No se ha podido comprobar el correo</string>
+    <string name="hombre">Masculino</string>
+    <string name="mujer">Femenino</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="ejercicio">Ejercicio</string>
+    <string name="dieta">Dieta</string>
+    <string name="desglose">Desglose alimentos</string>
+</resources>
