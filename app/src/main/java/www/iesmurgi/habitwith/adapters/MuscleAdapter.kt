@@ -4,10 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import www.iesmurgi.habitwith.databinding.MuscleItemBinding
-import www.iesmurgi.habitwith.models.Musculo
 
 class MuscleAdapter : RecyclerView.Adapter<MuscleAdapter.MuscleViewHolder>() {
-    private val muscleList: MutableList<Musculo> = mutableListOf()
+    private val muscleList: MutableList<String> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MuscleViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,7 +23,7 @@ class MuscleAdapter : RecyclerView.Adapter<MuscleAdapter.MuscleViewHolder>() {
         return muscleList.size
     }
 
-    fun submitList(list: List<Musculo>) {
+    fun submitList(list: List<String>) {
         muscleList.clear()
         muscleList.addAll(list)
         notifyDataSetChanged()
@@ -33,8 +32,8 @@ class MuscleAdapter : RecyclerView.Adapter<MuscleAdapter.MuscleViewHolder>() {
     inner class MuscleViewHolder(private val binding: MuscleItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(muscle: Musculo) {
-            binding.tvMuscleName.text = muscle.muscleName
+        fun bind(muscle: String) {
+            binding.tvMuscleName.text = muscle
             // Set other views as needed
 
             binding.root.setOnClickListener {

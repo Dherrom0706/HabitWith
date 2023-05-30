@@ -50,26 +50,28 @@ class EjercicioFragment : Fragment() {
     private fun getMuscles() {
         println("Hola")
         apiService = RetrofitClient.createService(ApiService::class.java)
+        //List<Musculo>
         val call = apiService.getMuscles()
-        call.enqueue(object : Callback<MusculosResponse> {
-            override fun onResponse(
-                call: Call<MusculosResponse>,
-                response: Response<MusculosResponse>
-            ) {
-                if (response.isSuccessful) {
-                    val muscles = response.body()?.muscles
 
-                    println(muscles)
-                    println("Ha llegado a muscles")
-                    muscles?.let {
-                        muscleAdapter.submitList(it)
+
+        call.enqueue(object : Callback<List<String>> {
+            override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
+                if (response.isSuccessful) {
+                    val muscles = response.body()
+                    // Aquí puedes realizar las operaciones necesarias con la lista de músculos obtenida
+                    // Por ejemplo, actualizar el RecyclerView con los músculos
+
+                    if (muscles != null) {
+                        // Actualizar el RecyclerView con los músculos
+                        muscleAdapter.submitList(muscles)
                     }
                 } else {
-                    println("No Ha llegado a muscles")
+                    // Error en la respuesta de la API
+                    // Manejar el error según tus necesidades
                 }
             }
 
-            override fun onFailure(call: Call<MusculosResponse>, t: Throwable) {
+            override fun onFailure(call: Call<List<String>>, t: Throwable) {
                 println(t.message)
                 println(t.stackTrace)
                 println("Fallo mucho de mucho")

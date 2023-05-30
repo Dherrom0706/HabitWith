@@ -37,6 +37,6 @@ object RetrofitClient {
 interface ApiService {
 
     @GET("exercises/targetList")
-    fun getMuscles(): Call<MusculosResponse>
+    fun getMuscles(): Call<List<String>>
 
 }
