@@ -30,11 +30,9 @@ class Principal : AppCompatActivity() {
             when (position) {
                 0 -> {
                     tab.text = getString(R.string.ejercicio)
-                    //tab.setIcon(R.drawable.ic_baseline_login_24)
                 }
                 1 -> {
                     tab.text = getString(R.string.dieta)
-                    //tab.setIcon(R.drawable.ic_baseline_app_registration_24)
                 }
                 2 -> {
                     tab.text = getString(R.string.desglose)

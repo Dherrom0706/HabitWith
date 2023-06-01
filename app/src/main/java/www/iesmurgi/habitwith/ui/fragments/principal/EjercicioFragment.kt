@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
@@ -15,21 +16,38 @@ import retrofit2.Callback
 import retrofit2.Response
 import www.iesmurgi.habitwith.R
 import www.iesmurgi.habitwith.adapters.MuscleAdapter
-import www.iesmurgi.habitwith.databinding.FragmentEjercicioBinding
+import www.iesmurgi.habitwith.databinding.FragmentMusculoBinding
 import www.iesmurgi.habitwith.models.*
 
 
 class EjercicioFragment : Fragment() {
-    private lateinit var binding: FragmentEjercicioBinding
+    private lateinit var binding: FragmentMusculoBinding
     private lateinit var apiService: ApiService
     private lateinit var muscleAdapter: MuscleAdapter
+    private val muscleList: MutableList<Musculo> = mutableListOf(
+        Musculo("9","Triceps",R.drawable.ic_baseline_app_registration_24),
+        Musculo("5","Trapecio",R.drawable.ic_baseline_app_registration_24),
+        Musculo("2","Hombros",R.drawable.ic_baseline_app_registration_24),
+        Musculo("11","Biceps femoral",R.drawable.ic_baseline_app_registration_24),
+        Musculo("13","Branchialis",R.drawable.ic_baseline_app_registration_24),
+        Musculo("7","Calves",R.drawable.ic_baseline_app_registration_24),
+        Musculo("8","Gluteos",R.drawable.ic_baseline_app_registration_24),
+        Musculo("14","Obliquos",R.drawable.ic_baseline_app_registration_24),
+        Musculo("4","Pectoral",R.drawable.ic_baseline_app_registration_24),
+        Musculo("10","Quadriceps",R.drawable.ic_baseline_app_registration_24),
+        Musculo("6","Abdominales",R.drawable.ic_baseline_app_registration_24),
+        Musculo("3","Serratus",R.drawable.ic_baseline_app_registration_24),
+        Musculo("15","Soleos",R.drawable.ic_baseline_app_registration_24),
+        Musculo("1","Biceps",R.drawable.ic_baseline_app_registration_24),
+        Musculo("12","Latissimus dorsi",R.drawable.ic_baseline_app_registration_24)
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentEjercicioBinding.inflate(inflater, container, false)
+        binding = FragmentMusculoBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -40,42 +58,29 @@ class EjercicioFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        muscleAdapter = MuscleAdapter()
+
         binding.rvMuscles.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = muscleAdapter
+            adapter = MuscleAdapter(muscleList)
         }
+
     }
 
     private fun getMuscles() {
-        println("Hola")
-        apiService = RetrofitClient.createService(ApiService::class.java)
-        //List<Musculo>
-        val call = apiService.getMuscles()
+
+        var adapter = MuscleAdapter(muscleList)
+        binding.rvMuscles.adapter = adapter
+        adapter.setOnItemClickListener(object : MuscleAdapter.onItemClickListener{
+
+            override fun onItemClick(position: Int) {
 
 
-        call.enqueue(object : Callback<List<String>> {
-            override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
-                if (response.isSuccessful) {
-                    val muscles = response.body()
-                    // Aquí puedes realizar las operaciones necesarias con la lista de músculos obtenida
-                    // Por ejemplo, actualizar el RecyclerView con los músculos
 
-                    if (muscles != null) {
-                        // Actualizar el RecyclerView con los músculos
-                        muscleAdapter.submitList(muscles)
-                    }
-                } else {
-                    // Error en la respuesta de la API
-                    // Manejar el error según tus necesidades
-                }
             }
 
-            override fun onFailure(call: Call<List<String>>, t: Throwable) {
-                println(t.message)
-                println(t.stackTrace)
-                println("Fallo mucho de mucho")
-            }
         })
+
     }
+
+
 }

@@ -1,21 +1,26 @@
 package www.iesmurgi.habitwith.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import www.iesmurgi.habitwith.databinding.MuscleItemBinding
+import www.iesmurgi.habitwith.R
+import www.iesmurgi.habitwith.models.Musculo
 
-class MuscleAdapter : RecyclerView.Adapter<MuscleAdapter.MuscleViewHolder>() {
-    private val muscleList: MutableList<String> = mutableListOf()
+class MuscleAdapter(private val muscleList: MutableList<Musculo>) : RecyclerView.Adapter<MuscleAdapter.MuscleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MuscleViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = MuscleItemBinding.inflate(inflater, parent, false)
-        return MuscleViewHolder(binding)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.muscle_item, parent, false)
+
+        return MuscleViewHolder(itemView,mListener)
     }
 
     override fun onBindViewHolder(holder: MuscleViewHolder, position: Int) {
         val muscle = muscleList[position]
+        holder.imagenMusculo.setImageResource(muscle.imageUrl)
+        holder.nombreMusculo.text = muscle.muscleName
         holder.bind(muscle)
     }
 
@@ -23,23 +28,40 @@ class MuscleAdapter : RecyclerView.Adapter<MuscleAdapter.MuscleViewHolder>() {
         return muscleList.size
     }
 
-    fun submitList(list: List<String>) {
-        muscleList.clear()
-        muscleList.addAll(list)
+    fun submitList() {
         notifyDataSetChanged()
     }
 
-    inner class MuscleViewHolder(private val binding: MuscleItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(muscle: String) {
-            binding.tvMuscleName.text = muscle
-            // Set other views as needed
+    class MuscleViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
 
-            binding.root.setOnClickListener {
-                // Handle click on muscle item
-                // You can navigate to another fragment/activity here
+        val nombreMusculo = itemView.findViewById<TextView>(R.id.tvMuscleName)
+        val imagenMusculo = itemView.findViewById<ImageView>(R.id.ivMuscleImage)
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
             }
         }
+        fun bind(muscle: Musculo) {
+
+            }
+        }
+
+    private lateinit var mListener : onItemClickListener
+    interface onItemClickListener{
+
+        fun onItemClick(position: Int)
+
     }
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+
+        mListener = listener
+
+    }
+
 }
+
+
+
+
