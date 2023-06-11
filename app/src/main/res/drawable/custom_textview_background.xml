@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#D1D1D1" /> <!-- Color de fondo cuando se presiona -->
+            <stroke android:color="#919FFF" android:width="2dp" /> <!-- Borde -->
+            <corners android:radius="8dp" /> <!-- Redondeo de esquinas -->
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="#F5F5F5" /> <!-- Color de fondo predeterminado -->
+            <stroke android:color="#919FFF" android:width="2dp" /> <!-- Borde -->
+            <corners android:radius="8dp" /> <!-- Redondeo de esquinas -->
+        </shape>
+    </item>
+</selector>

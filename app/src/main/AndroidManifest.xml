@@ -2,10 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -13,10 +25,25 @@
         android:theme="@style/Theme.HabitWith"
         tools:targetApi="31">
         <activity
-            android:name=".ui.EjerciciosActivity"
+            android:name=".ui.fragments.principal.menu.Profile"
             android:exported="false" />
         <activity
-            android:name=".ui.Principal"
+            android:name=".ui.fragments.principal.menu.About"
+            android:exported="false" />
+        <activity
+            android:name=".ui.fragments.principal.menu.HowTo"
+            android:exported="false" />
+        <activity
+            android:name=".ui.fragments.principal.desglose.ProductoDesglosado"
+            android:exported="false" />
+        <activity
+            android:name=".ui.fragments.principal.ejercicios.EjercicioBuscadoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.fragments.principal.ejercicios.EjerciciosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.fragments.principal.Principal"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -37,7 +64,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.Register"
+            android:name=".ui.fragments.login.GestorUsuario"
             android:exported="false"
             android:windowSoftInputMode="adjustPan"> <!-- Esto sirve para que no se desajuste -->
             <meta-data
@@ -57,6 +84,11 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".ui.fragments.principal.desglose.CapActivity"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme" />
 
         <meta-data
             android:name="preloaded_fonts"

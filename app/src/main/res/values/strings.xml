@@ -28,7 +28,7 @@
     <string name="datos">Datos personales</string>
     <string name="edad">Introduzca su edad en años</string>
     <string name="altura">Introduzca su altura en cm</string>
-    <string name="peso">"Introduzca su peso en KG "</string>
+    <string name="peso">"Introduzca su peso en KG</string>
     <string name="error_email">El email introducido no es válido</string>
     <string name="error_pass">Las contraseñas introducidas no coinciden</string>
     <string name="error_pass_regex">La contraseña necesita tener, minimo una mayuscula, minuscula, un digito y 8 carácteres.</string>
@@ -41,4 +41,28 @@
     <string name="ejercicio">Ejercicio</string>
     <string name="dieta">Dieta</string>
     <string name="desglose">Desglose alimentos</string>
+    <string name="scan">Click para escanear codigo de barras</string>
+    <string name="bienvenido">¡Bienvenido a HabitWith!\n</string>
+    <string name="register_failed">No se ha podido realizar correctamente el registro</string>
+    <string name="correo_no_existe">El correo electrónico no existe</string>
+    <string name="contra_incorrecta">La contraseña introducida es incorrecta</string>
+    <string name="error_desconocido">Error desconocido\n</string>
+    <string name="bienvenido_de_vuelta">Bienvenido de vuelta</string>
+    <string name="exercise_no_encontrado">El ejercicio que ha introducido no se ha encontrado\n</string>
+    <string name="alergenos">Alérgenos</string>
+    <string name="aditivos">Aditivos</string>
+    <string name="sobre_la_app">Sobre la app</string>
+    <string name="funciones">Como usar la app</string>
+    <string name="perfil">Perfil</string>
+    <string name="about">Proyecto desarollado para trabajo de fin de ciclo por Dionisio Hernández Romera</string>
+    <string name="titulo_desglose">Obtenga los adivitos y alérgenos del producto que desee</string>
+    <string name="howto">Una vez registrado podras elegir entre, escoger un ejercicio segun el músculo principal que quieras entrenar, una vez elegido elige el ejercicio que quieras prácticar y ver su descripción e imagen.\nTambién en cuanto a las recetas puedes elegir la que quieras de todo el listado y al seleccionar una, te llevará a la pagina donde podras ver toda la información referente a ella.\nPor último si eliges el desglose de alimentos podrás echarle una foto a un codigo de barras y podrás ver tanto sus aditivos como sus alérgenos, si haces click a alguno de los aditivos, podrás ver una clasificación del mismo</string>
+    <string name="perfil_titulo">Cambiar datos de tu perfil</string>
+    <string name="bajar_peso">Bajar peso</string>
+    <string name="ganar_musculo">Ganar músculo</string>
+    <string name="estable">Equilibrado</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="actualizado">Datos actualizados de forma correcta</string>
+    <string name="fallo_actualizado">Ha fallado la actualizacion de los datos</string>
+    <string name="vacio">No deje ningun campo vacio ni nada sin registrar</string>
 </resources>

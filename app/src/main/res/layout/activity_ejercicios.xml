@@ -5,15 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.EjerciciosActivity">
-
-    <TextView
-        android:id="@+id/texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="hola"/>
+    tools:context=".ui.fragments.principal.ejercicios.EjerciciosActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvExercises"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

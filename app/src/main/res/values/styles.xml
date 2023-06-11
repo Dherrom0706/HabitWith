@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomTextView" parent="@android:style/Widget.TextView">
+        <item name="android:background">@drawable/custom_textview_background</item>
+        <item name="android:padding">8dp</item> <!-- Ajusta el valor según tus necesidades -->
+        <item name="android:textColor">#0049FF</item> <!-- Color del texto -->
+    </style>
+
+</resources>

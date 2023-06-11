@@ -3,18 +3,20 @@ package www.iesmurgi.habitwith.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/***
- * Data class utilizada para la recogida de caracteristicas de la persona
+/**
+ * Clase que representa un usuario con sus datos personales y objetivos.
+ * @param edad Edad del usuario.
+ * @param altura Altura del usuario.
+ * @param peso Peso del usuario.
+ * @param sexo Sexo del usuario.
+ * @param objetivo Objetivo del usuario (por ejemplo, perder peso, ganar masa muscular, etc.).
  */
-data class Datos(
-
+data class Usuario(
     var edad: String? = "",
     var altura: String? = "",
     var peso: String? = "",
     var sexo: String? = "",
-    var objetivo: String? = "",
-    var id: String? = ""
-
+    var objetivo: String? = ""
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
@@ -22,7 +24,6 @@ data class Datos(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString()
     ) {
     }
 
@@ -32,19 +33,18 @@ data class Datos(
         parcel.writeString(peso)
         parcel.writeString(sexo)
         parcel.writeString(objetivo)
-        parcel.writeString(id)
     }
 
     override fun describeContents(): Int {
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<Datos> {
-        override fun createFromParcel(parcel: Parcel): Datos {
-            return Datos(parcel)
+    companion object CREATOR : Parcelable.Creator<Usuario> {
+        override fun createFromParcel(parcel: Parcel): Usuario {
+            return Usuario(parcel)
         }
 
-        override fun newArray(size: Int): Array<Datos?> {
+        override fun newArray(size: Int): Array<Usuario?> {
             return arrayOfNulls(size)
         }
     }

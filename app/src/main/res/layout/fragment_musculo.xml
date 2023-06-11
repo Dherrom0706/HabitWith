@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.principal.EjercicioFragment">
+    tools:context=".ui.fragments.principal.ejercicios.MusculosFragment">
 
     <!-- Lista de músculos -->
     <androidx.recyclerview.widget.RecyclerView

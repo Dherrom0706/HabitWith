@@ -6,21 +6,29 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import www.iesmurgi.habitwith.ui.fragments.login.LoginFragment
 import www.iesmurgi.habitwith.ui.fragments.login.RegisterFragment
 
-class ViewPagerLoginAdapter(fragment: FragmentActivity): FragmentStateAdapter(fragment) {
+/**
+ * Adaptador para ViewPager que muestra diferentes fragmentos en función de la posición.
+ *
+ * @param fragment Actividad de fragmento utilizada para el adaptador.
+ */
+class ViewPagerLoginAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment) {
 
-    companion object{
-        private const val ARG_OBJECT = "object"
-    }
-
+    /**
+     *
+     * Devuelve el número total de fragmentos en el ViewPager.
+     * @return El número total de fragmentos.
+     */
     override fun getItemCount(): Int = 2
-
+    /**
+     *
+     * Crea y devuelve un nuevo fragmento en función de la posición.
+     * @param position La posición del fragmento.
+     * @return El fragmento correspondiente a la posición.
+     */
     override fun createFragment(position: Int): Fragment {
-        if (position== 0){
+        if (position == 0) {
             return LoginFragment()
         }
         return RegisterFragment()
     }
-
-
-
 }

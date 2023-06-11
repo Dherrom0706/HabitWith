@@ -4,8 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import www.iesmurgi.habitwith.databinding.ActivityObjectivosBinding
-import www.iesmurgi.habitwith.models.Datos
+import www.iesmurgi.habitwith.models.Usuario
 
+/**
+ * Actividad que muestra la selección de objetivos para el usuario.
+ *
+ * Esta actividad permite al usuario elegir su objetivo de salud, como bajar de peso,
+ * mantener un peso equilibrado o aumentar la ingesta de proteínas.
+ */
 class Objetivos : AppCompatActivity() {
 
     private lateinit var binding: ActivityObjectivosBinding
@@ -18,35 +24,36 @@ class Objetivos : AppCompatActivity() {
         listeners()
     }
 
-    /***
-     * Listener asociados a los botones para elegir el objetivo a alcanzar, almacenando el resultado
-     * en uno de los campos de la data class Datos.
+    /**
+     *
+     * Configura los listeners de los elementos de la interfaz de usuario.
      */
     private fun listeners() {
 
-        var datos = intent.getParcelableExtra<Datos>("USUARIO")!!
+        var id = intent.getStringExtra("ID")!!
+        var usuario = Usuario()
         val intent = Intent(this, DatosPersonales::class.java)
 
+        //Btn a lo relacionado a bajar peso
         binding.btnBajar.setOnClickListener {
-
-            datos.objetivo = "bajar"
-            intent.putExtra("USUARIO", datos)
+            usuario.objetivo = "low-fat"
+            intent.putExtra("USUARIO", usuario)
+            intent.putExtra("ID",id)
             startActivity(intent)
-
         }
+        //Btn a lo relacionado a mantener
         binding.btnMantener.setOnClickListener {
-
-            datos.objetivo = "mantener"
-            intent.putExtra("USUARIO", datos)
+            usuario.objetivo = "balanced"
+            intent.putExtra("USUARIO", usuario)
+            intent.putExtra("ID",id)
             startActivity(intent)
-
         }
+        //Btn a lo relacionado a ganar musculo
         binding.btnMantener.setOnClickListener {
-
-            datos.objetivo = "fuerza"
-            intent.putExtra("USUARIO", datos)
+            usuario.objetivo = "high-protein"
+            intent.putExtra("USUARIO", usuario)
+            intent.putExtra("ID",id)
             startActivity(intent)
-
         }
     }
 }

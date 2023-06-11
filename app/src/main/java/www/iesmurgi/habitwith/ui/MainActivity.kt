@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import www.iesmurgi.habitwith.databinding.ActivityMainBinding
+import www.iesmurgi.habitwith.ui.fragments.login.GestorUsuario
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun listeners(){
         binding.btnComienzo.setOnClickListener {
-            startActivity(Intent(this, Register::class.java))
+            startActivity(Intent(this, GestorUsuario::class.java))
         }
     }
 }

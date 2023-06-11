@@ -59,7 +59,7 @@
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.308"
+                app:layout_constraintVertical_bias="0.377"
                 app:startIconDrawable="@drawable/ic_baseline_account_circle_24">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -86,7 +86,7 @@
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textField"
-                app:layout_constraintVertical_bias="0.088"
+                app:layout_constraintVertical_bias="0.189"
                 app:startIconDrawable="@drawable/ic_baseline_password_24">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -114,7 +114,7 @@
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textField2"
-                app:layout_constraintVertical_bias="0.119"
+                app:layout_constraintVertical_bias="0.292"
                 app:startIconDrawable="@drawable/ic_baseline_password_24">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -130,17 +130,6 @@
                     app:layout_constraintVertical_bias="0.307" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="centerInside"
-                android:src="@mipmap/ic_launcher"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textField3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
