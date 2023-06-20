@@ -65,4 +65,7 @@
     <string name="actualizado">Datos actualizados de forma correcta</string>
     <string name="fallo_actualizado">Ha fallado la actualizacion de los datos</string>
     <string name="vacio">No deje ningun campo vacio ni nada sin registrar</string>
+    <string name="error_registro">Error en el registro</string>
+    <string name="correo_no_valido">Correo no valido</string>
+    <string name="contra_no_coincide">Contraseñas no coinciden</string>
 </resources>

@@ -32,7 +32,7 @@ import www.iesmurgi.habitwith.ui.fragments.login.LoginFragment
  */
 class DietaFragment : Fragment() {
 
-    private val BASE_URL : String = "https://api.edamam.com/api/recipes/v2/"
+    private val BASE_URL: String = "https://api.edamam.com/api/recipes/v2/"
     private var app_id = "b33a89ee"
     private var app_key = "b9e86f29803194fe3afc0ecf975a7861"
     private lateinit var adapter: RecetasAdapter
@@ -40,8 +40,9 @@ class DietaFragment : Fragment() {
     private var recipes: MutableList<RecetaHit> = mutableListOf()
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private var dieta :String = ""
-    private var siguiente : String = ""
+    private var dieta: String = ""
+    private var siguiente: String = ""
+    private var isLoadingData = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,13 +53,12 @@ class DietaFragment : Fragment() {
         obtenerTipoDietaUsuario()
         initRecyclerView(recipes)
         return binding.root
-
     }
+
     /**
      * Obtiene el tipo de dieta del usuario desde Firestore y realiza la búsqueda de recetas.
      */
     private fun obtenerTipoDietaUsuario() {
-
         val userId = firebaseAuth.currentUser?.uid
         if (userId != null) {
             val userDocRef = firestore.collection("usuarios").document(userId)
@@ -80,7 +80,6 @@ class DietaFragment : Fragment() {
         } else {
             // No hay un usuario logeado
         }
-
     }
 
     /**
@@ -94,10 +93,8 @@ class DietaFragment : Fragment() {
         binding.rvRecetas.adapter = adapter
         adapter.setOnItemClickListener(object : onItemClickListener {
             override fun onItemClick(position: Int) {
-
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(recipes[position].recipe.shareAs))
                 startActivity(browserIntent)
-
             }
         })
 
@@ -110,7 +107,7 @@ class DietaFragment : Fragment() {
                 val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
 
                 // Verificar si se ha llegado al final del RecyclerView - 3 posiciones para que empiece a cargar antes
-                if (lastVisibleItem == totalItemCount - 3) {
+                if (!isLoadingData && lastVisibleItem >= totalItemCount - 3) {
                     // Llegó al lugar donde toca, carga de datos adicionales
                     loadMoreData()
                 }
@@ -129,6 +126,7 @@ class DietaFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
     /**
      * Realiza la búsqueda inicial de recetas de acuerdo a la dieta del usuario.
      */
@@ -136,10 +134,10 @@ class DietaFragment : Fragment() {
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 val recipesResponse = searchRecipes("?type=public&app_id=$app_id&app_key=$app_key&diet=$dieta&mealType=" +
-                        "Breakfast&mealType=Dinner&mealType=Lunch")
+                        "Breakfast&mealType=Dinner&mealType=Lunch&dishType=Main%20course")
                 recipes.clear()
                 recipes.addAll(recipesResponse.hits)
-                Log.d("ENLACE",recipesResponse._links.next.href)
+                siguiente = recipesResponse._links.next.href.replace(BASE_URL, "") // Obtener el enlace siguiente
                 adapter.notifyDataSetChanged()
             } catch (e: Exception) {
                 Log.e("MUSCULO", "Error: ${e.message}")
@@ -151,14 +149,20 @@ class DietaFragment : Fragment() {
      * Carga más datos de recetas cuando se ha llegado al final del RecyclerView.
      */
     private fun loadMoreData() {
-        CoroutineScope(Dispatchers.Main).launch {
-            try {
-                val recipesResponse = searchRecipes(siguiente)
-                recipes.addAll(recipesResponse.hits)
-                adapter.notifyDataSetChanged()
-                siguiente = recipesResponse._links.next.href.replace(BASE_URL, "") // Actualizar el enlace siguiente
-            } catch (e: Exception) {
-                Log.e("Receta", "Error: ${e.message}")
+        if (!siguiente.isNullOrEmpty()) {
+            isLoadingData = true // Establecer el indicador de carga a true
+
+            CoroutineScope(Dispatchers.Main).launch {
+                try {
+                    val recipesResponse = searchRecipes(siguiente)
+                    recipes.addAll(recipesResponse.hits)
+                    adapter.notifyDataSetChanged()
+                    siguiente = recipesResponse._links.next.href
+                } catch (e: Exception) {
+                    Log.e("Receta", "Error: ${e.message}")
+                } finally {
+                    isLoadingData = false // Establecer el indicador de carga a false después de completar la carga
+                }
             }
         }
     }
@@ -170,14 +174,13 @@ class DietaFragment : Fragment() {
      * @return La respuesta de la búsqueda de recetas.
      */
     private suspend fun searchRecipes(enlace: String): RecetaResponse {
-
-        Log.d("Dieta1",dieta)
+        Log.d("Dieta1", dieta)
         val call = getRetrofit().create(APIService::class.java)
             .getRecipes(enlace)
 
         Log.d("siguiente", siguiente)
         if (call.isSuccessful) {
-            val response = call.body() ?: throw Exception("Cuerpo de la respuesta vacio")
+            val response = call.body() ?: throw Exception("Cuerpo de la respuesta vacío")
             siguiente = response._links.next.href.replace(BASE_URL, "")
             return response
         } else {

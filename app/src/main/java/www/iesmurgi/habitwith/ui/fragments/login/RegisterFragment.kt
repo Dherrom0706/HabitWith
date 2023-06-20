@@ -63,7 +63,11 @@ class RegisterFragment : Fragment() {
             if (checkCorrectPassword(password1, password2)) {
                 if (checkCorrectEmail(email)) {
                     checkIfEmailExists(email, password1)
+                }else{
+                    Toast.makeText(activity,(requireContext().getString(R.string.correo_no_valido)), Toast.LENGTH_LONG).show()
                 }
+            }else{
+                Toast.makeText(activity,(requireContext().getString(R.string.contra_no_coincide)), Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -81,7 +85,8 @@ class RegisterFragment : Fragment() {
                     intent.putExtra("ID",auth.currentUser?.uid)
                     startActivity(intent)
                 } else {
-                    val exception = task.exception as? FirebaseAuthException
+
+                    Toast.makeText(activity,(requireContext().getString(R.string.error_registro)), Toast.LENGTH_LONG).show()
                 }
             }
     }
